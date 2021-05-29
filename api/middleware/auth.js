@@ -11,7 +11,7 @@ exports.protect = async(req,res,next)=>{
         token = req.cookies.token;
     }
     if(!token){
-        return res.status(400).send('Unauthorized');
+        return res.status(400).send({'error':'Unauthorized'});
     }
 
     try {
@@ -23,6 +23,6 @@ exports.protect = async(req,res,next)=>{
 
         next();
     } catch (error) {
-        return res.status(400).send('Unauthorized');
+        return res.status(400).send({'error':'Unauthorized'});
     }
 }
