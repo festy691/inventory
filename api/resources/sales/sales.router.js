@@ -7,7 +7,7 @@ const saleRouter = express.Router();
 module.exports = saleRouter;
 
 saleRouter.route('/')
-    .post(protect, authorize('admin'), upload.single('image'),saleController.createSale)
+    .post(protect, upload.single('image'),saleController.createSale)
     .get(saleController.getAllSales);
 
 saleRouter.route('/:id')
