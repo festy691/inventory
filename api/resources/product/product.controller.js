@@ -107,7 +107,7 @@ module.exports =  {
                 else{
                     return res.status(400).send({"error":err});
                 }
-            });
+            }).populate('agent', '_id name image phonenumber email');
         } catch (err) {
             return res.status(400).send({"error":err});
         }
@@ -122,7 +122,7 @@ module.exports =  {
                 else{
                     return res.status(400).send({"error":err});
                 }
-            });
+            }).populate('agent', '_id name image phonenumber email');
         } catch (err) {
             return res.status(400).send({"error":err});
         }
