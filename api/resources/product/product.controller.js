@@ -16,6 +16,7 @@ module.exports =  {
             if (!data.price) return res.status(400).send({"error":"price is required"});
             if (!data.description) return res.status(400).send({"error":"description is required"});
             if (!data.quantity) return res.status(400).send({"error":"quantity is required"});
+            if (!data.expireDate) return res.status(400).send({"error":"expireDate is required"});
             if (!data.brand) return res.status(400).send({"error":"brand is required"});
             if (!data.agent) return res.status(400).send({"error":"agent is required"});
 
@@ -23,6 +24,7 @@ module.exports =  {
             Product.price = data.price;
             Product.description = data.description;
             Product.quantity = data.quantity;
+            Product.expireDate = data.expireDate;
             Product.brand = data.brand;
             Product.agent = data.agent;
 

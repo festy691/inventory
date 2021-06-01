@@ -13,4 +13,4 @@ restRouter.use('/users', userRouter);
 restRouter.use('/authenticate', authRouter);
 restRouter.use('/images', imageRouter);
 restRouter.use('/products', productRouter);
-restRouter.use('/sales', productRouter);
+restRouter.use('/sales', saleRouter);

@@ -34,6 +34,10 @@ let ProductSchema = new mongoose.Schema({
     dateRestocked : {
         type : Date,
     },
+    expireDate : {
+        type : Date,
+        required : true
+    },
     date : {
         type : Date,
         default : Date.now()
