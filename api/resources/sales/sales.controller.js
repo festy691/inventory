@@ -63,7 +63,7 @@ module.exports =  {
                 else{
                     return res.status(400).send({"error":err});
                 }
-            }).populate('agent', '_id name image phonenumber email').populate('product', '_id name price');
+            }).populate('agent', '_id name image phonenumber email').populate('product', '_id name price brand');
         } catch (err) {
             return res.status(400).send({"error":err});
         }
@@ -78,7 +78,7 @@ module.exports =  {
                 else{
                     return res.status(400).send({"error":err});
                 }
-            }).populate('agent', '_id name image phonenumber email').populate('product', '_id name price');
+            }).populate('agent', '_id name image phonenumber email').populate('product', '_id name price brand');
         } catch (err) {
             return res.status(400).send({"error":err});
         }
