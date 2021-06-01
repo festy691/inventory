@@ -6,8 +6,12 @@ let SaleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    products : {
-        type : [mongoose.Schema.Types.ObjectId],
+    quantity: {
+        type: Number,
+        required: true
+    },
+    product : {
+        type : mongoose.Schema.Types.ObjectId,
         ref : 'Product',
         required : true
     },
