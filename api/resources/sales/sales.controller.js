@@ -3,6 +3,7 @@ const path = require("path");
 const cloudinary = require('../../../config/cloudinary');
 const fs = require('fs');
 
+const ProductModel = require("../product/product.model");
 const SaleModel = require("./sales.model");
 
 module.exports =  {
@@ -14,15 +15,33 @@ module.exports =  {
 
             if (!data.customer) return res.status(400).send({"error":"customer is required"});
             if (!data.agent) return res.status(400).send({"error":"agent is required"});
-            if (!data.product.length === 0) return res.status(400).send({"error":"You cannot create an empty sale"});
+            if (!data.quantity) return res.status(400).send({"error":"quantity is required"});
+            if (!data.product) return res.status(400).send({"error":"product is required"});
 
+            const quantity = data.quantity;
+            const product = data.product;
+            
+            let oldData = await ProductModel.findOne({_id:product});
+            if (!oldData) return res.status(404).send({"error":"Item not found"});
+            
             Sale.customer = data.customer;
             Sale.agent = data.agent;
+            Sale.quantity = quantity;
             Sale.product = data.product;
 
             await Sale.save((err, docs)=>{
                 if (!err){
-                    return res.status(200).send({"success":"Sale added to stock"});
+                    oldData.quantity = oldData.quantity - quantity;
+                    oldData.save((err, docs)=>{
+                        if (!err){
+                            oldData.quantity = oldData.quantity - quantity;
+                            oldData.
+                            return res.status(200).send({"success":"Sale added to stock"});
+                        }
+                        else{
+                            return res.status(400).send({"error":err});
+                        }
+                    });
                 }
                 else{
                     return res.status(400).send({"error":err});
