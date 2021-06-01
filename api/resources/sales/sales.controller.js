@@ -35,7 +35,7 @@ module.exports =  {
                     oldData.save((err, docs)=>{
                         if (!err){
                             oldData.quantity = oldData.quantity - quantity;
-                            oldData.
+                           
                             return res.status(200).send({"success":"Sale added to stock"});
                         }
                         else{
